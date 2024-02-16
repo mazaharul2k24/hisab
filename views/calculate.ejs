@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/calPro.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     
+    <title>Calculate page</title>
+</head>
+<style>
+
+    .mainCalprosec{
+        position: relative;
+        top: 100px;
+    }
+    .statusInsert {
+    width: 348px;
+    margin: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    margin-left: 37%;
+}
+@media only screen and (max-width: 600px) {
+    .statusInsert {
+    width: 348px;
+    margin: auto;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    margin-left: 13%;
+}
+.cs-table_responsive {
+    overflow-x: auto;
+}
+
+
+}
+i.text-green-500.fa-solid.fa-check {
+    font-size: 36px;
+}
+.inline-block.bg-green-50.rounded-full {
+    padding: 17px;
+    
+}
+
+
+.buyerSingleInfobox {
+    width: 100%;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+.buyerSingleInfobox input {
+    padding:  6px 10px;
+    border-radius: 3px;
+    border: 1px solid rebeccapurple;
+    outline: none;
+}
+
+.buyerInfomain {
+    padding: 16px 0px;
+}
+
+table.pTable.buyer {
+    background: #0e0826;
+    box-shadow: 2px 4px 5px #787373;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 12px;
+    color: #c9c9c9;
+}
+
+table.pTable.buyer thead {
+    border: none;
+}
+
+table.pTable.buyer tr td {
+    border: none;
+}
+
+table.pTable.buyer thead {
+    border-bottom: 1px solid #787373;
+}
+</style>
+<body class="bg-gradient-to-r from-purple-400 to-pink-200">
+    <div class="headr bg-gray-300 p-3">
+        <nav class="w-[40%] mx-auto">
+            <ul class="grid grid-cols-3 ">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="./login">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+       <%if(locals.inserted){%>
+                <div class="statusInsert  ">
+              <div class="  mx-auto ">
+                <div class="flex flex-col p-5 rounded-lg shadow bg-white">
+                  <div class="flex flex-col items-center text-center">
+                    <div class="inline-block  bg-green-50 rounded-full">
+                  
+                      <i class="   text-green-500 fa-solid fa-check"></i>
+                    </div>
+                    <h2 class="mt-2 font-semibold text-gray-800">Success</h2>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">Successfully your hisab calculate Token number is <span class="text-green-500"> <%-inserted%></span> data added you get statement your profile</p>
+                  </div>
+                  <div class="flex items-center mt-3">
+                    
+              
+                    <button onclick="(hellow())" class="flex-1 px-4 py-2 ml-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md">
+                      Colse 
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <%}%>
+
+
+             <%if(locals.notinserted){%>
+              <p class="alert alert-danger" role="alert" style="width: 300px;margin: auto;"><%-notinserted%></p>
+            
+             <%}%>
+    
+    
+    
+    
+             <div class="mainCalprosec w-5/6 mx-auto bg-gradient-to-r from-stone-300	 to-neutral-200 rounded-md shadow-lg py-4">
+        <div class="  section">
+            <div class="text-center text-2xl py-3 font-bold">
+                <h3 class="text-black">Calculate Your Activites</h3>
+            </div>
+
+            <div class="buyerInfomain">
+                <div class="buyerSingleInfobox">
+                    <input type="text" maxlength="30" name="bname" id="bname" placeholder="Buyer Name" required>
+                    <input type="text" name="baddr" maxlength="60" id="baddr" placeholder="Buyer address" required>
+                    <input type="number" name="bpn" id="bpn" maxlength="10" placeholder="Buyer Number" required><br>
+                    <p style="color: red;padding: 10px;" id="buyerStatus"></p>
+                  
+                </div>
+
+            </div>
+
+         <div class="iBadjust ">
+            <div class="calInpMain ">
+                <div class="calInpWrapper ">
+                    <div class="calproBoxmain">
+                        <div class="calProWrapper grid grid-cols-1 md:grid-cols-5 gap-3  aitem-center  p-3 m-2">
+                            <!-- all input box here  -->
+                            <div class="calproInpt calBoxmain w-full">
+                                <label for="" class="font-sm text-center">Product Name</label>
+                                <input type="text" required maxlength="30" name="productname" id="calNameBox" placeholder="Product Name" class="calBox  calNameBox border w-full  rounded-md shadow-md  ">
+                            </div>
+                            <div class="calproInpt calBoxmain">
+                                <label for="" class="font-sm ">Product Price</label>
+                                <input maxlength="10" required type="text" name="productprice" id="calPriceBox" placeholder="Product Price" class="calBox calPriceBox  border  w-full  rounded-md shadow-md ">
+                            </div>
+                            <div class="calproInpt calBoxmain  w-full">
+                                <div class="slQnty">
+                                    <!-- pqtype=product quantity type -->
+                                    <label for="" class="font-sm t">Quantity type</label>
+                                    <select name="pqtype" id="pwType" class="calBox  w-full rounded-md border shadow-md pwType">
+                                        <option value="W">select</option>
+                                        <option value="kG">KG</option>
+                                        <option value="Person">Person</option>
+                                        <option value="Pic">piece</option>
+                                        <option value="Litter">Litter</option>
+                                        <option value="custom">custom</option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="calproInpt calBoxmain  w-full">
+                                 <!-- pqt=product quantity -->
+                                 <label for="" class="font-sm ">Quantity </label>
+                                <select name="pqt" id="pquantity" class="calBox  w-full rounded-md shadow-md border pquantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="custom">custom</option>
+                                </select>
+                            </div>
+                            <div class="calproInpt addMoreBtn">
+                                <button  id="addmorebtn"  class="addmorebtn block mx-auto my-2 relative top-5  md:top-5 item-center shadow-xl rounded-md bg-green-600 hover:bg-green-700 ">
+                                   Add More
+                                </button>
+                
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+             
+              </div>
+    
+    
+                <div class="calproBtn">
+                    <input type="submit" class="bg-indigo-600 hover:bg-indigo-700 shadow-xl rounded-md" value="Calculate"  id="calBtn">
+                </div>
+         </div>
+
+
+        <div class="reviewTdata " style="display: none;">
+            <form action="/calculate"  method="post">
+
+                <div class="a">
+                    <div class="cs-table_responsive">
+                        <table class="pTable buyer">
+                            <thead>
+                              <tr>
+                                <td >Token</td>
+                                <td >Buyer Name</td>
+                                <td >address</td>
+                                <td >Phone</td>
+                            
+                              </tr>
+                            </thead>
+                            <tbody class="buyerData">
+                            </tbody>
+        
+                        </table>
+
+
+                <table class="pTable bg-teal-900 text-white">
+                    <thead>
+                      <tr>
+                        <td >Id</td>
+                        <td >Name</td>
+                        <td >price</td>
+                       
+                        <td >Quantity</td>
+                        <td >Date</td>
+                        <td >Token</td>
+                        <td >Total</td>
+                      </tr>
+                    </thead>
+                    <tbody class="pbData">
+                    </tbody>
+
+                </table>
+                    </div>
+                </div>
+
+
+
+            <div class="pDataManageBtn mx-auto block w-4/4 grid grid-cols-2">
+                <div class="pdataEdit">
+                    <div class="editBtn bg-pink-500	 hover:bg-pink-600 shadow-xl rounded-md "><a href="#">Edit</a></div>
+                </div>
+                <div class="pdataInsert">
+                    <button class="insertBtn bg-indigo-600 hover:bg-indigo-700 shadow-xl rounded-md">
+                        Insert
+                    </button>
+                </div>
+            </div>
+          
+        </form>
+        </div>
+        
+
+        </div>
+      
+         
+         
+    </div>
+   
+<script> 
+$(document).ready(function(){
+
+  $("#addmorebtn").click(function(e){
+    var a=$(".calInpWrapper").length;
+
+if(a<10){
+
+    e.preventDefault();
+$(".calInpMain").prepend(`  <div class="calInpWrapper">
+                <div class="calproBoxmain">
+                    <div class="calProWrapper grid grid-cols-1 md:grid-cols-5 gap-3  aitem-center p-3 m-2">
+                        <!-- all input box here  -->
+                        <div class="calproInpt calBoxmain">
+                      
+                            <label for="" class="font-sm ">Product Name</label>
+                            <input type="text" required maxlength="30" name="productname" id="calNameBox" placeholder="Product Name" class="calBox calNameBox  w-full border rounded-md shadow-md">
+                        </div>
+                        <div class="calproInpt calBoxmain">
+                            <label for="" class="font-sm ">Product Price</label>
+                            <input maxlength="10" required type="text" name="productprice" id="calPriceBox" placeholder="Product Price" class="calBox calPriceBox  w-full border rounded-md shadow-md">
+                        </div>
+    
+                        <div class="calproInpt calBoxmain  w-full">
+    
+                          
+                            <div class="slQnty  w-full">
+                                <!-- pqtype=product quantity type -->
+                                <label for="" class="font-sm ">Quantity type</label>
+                                <select name="pqtype"  id="pwType" class="calBox  w-full border rounded-md shadow-md pwType">
+                                    <option value="W">select</option>
+                                    <option value="Kg">KG</option>
+                                    <option value="person">Person</option>
+                                    <option value="Piece">Piece</option>
+                                    <option value="Litter">Litter</option>
+                                    <option value="custom">custom</option>
+                                </select>
+                            </div>
+                        </div>
+    
+                        <div class="calproInpt calBoxmain  ">
+                             <!-- pqt=product quantity -->
+                             <label for="" class="font-sm ">Quantity </label>
+                            <select name="pqt" id="pquantity" class="calBox  w-full  border rounded-md shadow-md pquantity">
+                                <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="custom">custom</option>
+                            </select>
+                        </div>
+                        <div class="calproInpt addMoreBtn">
+                            <input type="submit" name="removeBtn" id="removeBtn"  class="removeBtn block mx-auto my-2 relative top-5 rounded-md   bg-pink-800 hover:bg-pink-900" value="Remove">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>`);
+         
+
+            }else{
+                alert("Maximum 10 collam added")
+            }
+
+
+            $("#removeBtn").click(function (e) {
+          e.preventDefault();
+          let rowItem = $(this).parent().parent();
+          $(rowItem).remove();
+      })
+  });
+
+var reviewPdata=[];
+
+  $("#calBtn").click(function(e){
+
+    try {
+        e.preventDefault();
+        const inpPname=$(".calNameBox");
+    const inpPprice=$(".calPriceBox");
+    const inpPwType=$(".pwType");
+    const inpPquantity=$(".pquantity");
+    const date=new Date();
+    const dateAdjust=date.toLocaleDateString();
+    const tokenGen=parseInt((Math.random(0,999999)*100000));
+
+    //seller information collect
+    const buyerName=$("#bname").val();
+    const buyerAddress=$("#baddr").val();
+    var buyerNumber=$("#bpn").val();
+
+    
+    if(inpPname.val()!=="" && inpPprice.val()!=="" && buyerName!=="" && buyerAddress!=="" && buyerNumber!==""){
+  //toggle working
+        if(buyerNumber.length==11 ){
+            $(".iBadjust").hide();
+    $(".buyerInfomain").hide()
+    $(".reviewTdata").show();
+            $(".buyerData").prepend(`
+        <tr>
+                              <td><input type='text' hidden name="btoken" value="token-${tokenGen}" />token-${tokenGen}</td>
+                              <td><input type='text' hidden name="bname" value="${buyerName}" />${buyerName}</td>
+                              <td><input type='text' hidden name="baddr" value="${buyerAddress}" />${buyerAddress}</td>
+                              <td><input type='text' hidden name="bnmbr" value="${buyerNumber}" />${buyerNumber}</td>
+                              </tr>
+    `);
+
+    for (let index = 0; index < inpPname.length; index++) {
+        const pId=Math.floor(Math.random() * 100000000+1000000);
+       $(".pbData").append(`
+       <tr>
+                              <td><input type='text' hidden name="pid[]" value="ID-${pId}" />ID-${pId}</td>
+                              <td><input type='text' hidden name="pname[]" value="${inpPname[index].value}" />${inpPname[index].value}</td>
+                              <td><input type='text' hidden name="pprice[]" value="${inpPprice[index].value}" />${inpPprice[index].value}</td>
+                              <td><input type='text' hidden name="pquantity[]" value="${inpPquantity[index].value+ '.'+ inpPwType[index].value}" /> ${inpPquantity[index].value + "."+ inpPwType[index].value}</td>
+                              <td><input type='text' hidden name="pinDate[]" value="${dateAdjust}" />${dateAdjust}</td>
+                              <td><input type='text' hidden name="ptoken[]" value="token-${tokenGen}"/> token-${tokenGen}</td>
+                              <td><input type='text' hidden name="ptotalprice[]" value=" ${(parseInt(inpPprice[index].value) * parseInt(inpPquantity[index].value))}" /> (${inpPprice[index].value} X ${inpPquantity[index].value})= ${(parseInt(inpPprice[index].value) * parseInt(inpPquantity[index].value))}</td>
+                             </tr>`
+                             
+                             )
+      
+      }
+
+
+
+        }else{
+
+            $("#buyerStatus").text("Phone Number Maxium 11 disit");
+           
+        }
+    }else{
+        alert("Data Empty!");
+    }
+    } catch (error) {
+        console.log(error)
+    }
+   
+  });
+ 
+  $(".editBtn").click(function(){
+    $(".reviewTdata").hide();
+    $(".pbData").empty();
+    $(".buyerData").empty();
+    $(".buyerInfomain").show()
+    $(".iBadjust").show();
+
+  })
+});
+
+function hellow(){
+    $(".statusInsert").hide();
+  
+}
+
+
+
+    </script>
+</body>
+</html>

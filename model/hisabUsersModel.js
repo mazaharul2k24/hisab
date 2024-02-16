@@ -1,0 +1,75 @@
+const mongoose=require("mongoose");
+
+const hisabUsersSchima=mongoose.Schema({
+    userId:{
+        require:true,
+        type:String
+    },
+    accountnumber:{
+        require:true,
+        type:String
+    },
+    userFirstName:{
+        require:true,
+        type:String
+    },
+    userLastName:{
+        require:true,
+        type:String
+    },
+    userEmail:{ 
+        require:true,
+        type:String
+    },
+    userPhone:{
+        require:true,
+        type:String
+    },
+    userAddress:{
+        require:true,
+        type:String
+    },
+    postcode:{
+        require:true,
+        type:String,
+        default:"0000"
+    },
+    userPassword:{
+        require:true,
+        type:String
+    },
+    userStatus:{
+        require:true, 
+        type:String
+    },
+    date:{
+        require:true,
+        type:String
+    },
+    verifyKey:{
+        require:true,
+        type:String
+    },
+    profileImage:{
+        require:true,
+        type:String,
+        default:"profile.png"
+    },
+    updateCount:{
+        require:true,
+        type:String,
+        default:"0"
+    },
+    invoiceSign:{
+        require:true,
+        type:String,
+ 
+    }, 
+    invoiceLogo:{
+        require:true,
+        type:String,
+      
+    }
+})
+
+module.exports=mongoose.model("hisabUsersTable",hisabUsersSchima); 

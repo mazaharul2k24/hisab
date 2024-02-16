@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <title>হিসাব </title>
+</head>
+<body>
+    <style>
+        
+.h-8.w-auto {
+  width: 136px;
+  height: 47px;
+}
+
+.hisabTitle::first-letter{
+  color: rgb(122, 26, 101);
+
+
+  
+}
+.container{
+  width: 1275px;
+  margin: auto;
+}
+.service-width{
+  width: 24%;
+  padding: 70px 10px;
+  margin: 6px;
+
+}
+
+.serviceimg {
+    width: 50%;
+    margin: auto;
+    text-align:center;
+    display: block;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+.serviceimg:hover{
+  color: rgb(236, 240, 231);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+
+.sserviceBox:hover{
+  a{
+    color: white;
+  }h3.text-center.py-3 {
+    color: white;
+  }
+  transform: translate(-10px);
+  background: #c32062;
+  color: white;
+  transition: all 1s;
+}
+a {
+    display: block;
+    text-align: center;
+    color: #443131;
+}
+
+h3.text-center.py-3 {
+ 
+    font-size: 20px;
+}
+h3 {
+
+    font-size: 20px;
+}
+
+.serviceText {
+    line-height: 32px;
+    text-align: cj;
+    text-align: justify;
+}
+
+.seemore {
+    color: #6710b8ab;
+    margin-top: 11px;
+}
+
+    </style>
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+          <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="flex lg:flex-1">
+              <a href="/" class="-m-1.5 p-1.5">
+                <span class="sr-only">Your Company</span>
+                <img class="h-8 w-auto" src="hisablogo.png" alt="">
+              </a>
+            </div>
+            <div class="flex lg:hidden">
+              <button type="button" id="openMBtn" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                <span class="sr-only">Open main menu</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+              <a href="/" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
+ 
+              <a href="/calculate" class="text-sm font-semibold leading-6 text-gray-900">Calculate</a>
+              <a href="/contact" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
+              <a href="/about" class="text-sm font-semibold leading-6 text-gray-900">About</a>
+           
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+              <a href="/login" class="text-sm font-semibold leading-6 text-gray-900">Get <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </nav>
+          <!-- Mobile menu, show/hide based on menu open state. -->
+          <div class="lg:hidden" role="dialog" aria-modal="true" id="clMenu" style="display: none;">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-50"></div>
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+              <div class="flex items-center justify-between">
+                <a href="#" class="-m-1.5 p-1.5">
+                  <span class="sr-only">Your Company</span>
+                  <img class="h-8 w-auto" src="hisablogo.png" alt="">
+                </a>
+                <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" id="clMenubtn">
+                  <span class="sr-only">Close menu</span>
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                  <div class="space-y-2 py-6">
+                    <a href="/" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</a>
+                    <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact</a>
+   
+                    </a>
+                  </div>
+                  <div class="py-6">
+                    <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Get</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+          <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+          <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+            <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+               <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>find<span aria-hidden="true">&rarr;</span> Your saved Product</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <h5 class="hisabTitle text-3xl font-bold tracking-tight text-gray-900 sm:text-6xl">হিসাব করুন হিসাবের কাছ থেকে</h5>
+              <p class="mt-6 text-lg leading-8 text-gray-600">আপনার দৈনন্দিন জীবনের খরচ এর হিসাব করুন খুব সহজে হিসাব থেকে । তাছাড়া ডাউনলোড এবং সেভ করার সুবিধা তো  আছে  </p>
+              <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a href="/calculate" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+        </div>
+      </div>
+ 
+   <div class="mmainservice mb-9 	 py-6">
+    <div class="container">
+      <div class="serviceReper">
+        <div class="serviceHeader block py-6  text-2xl mb-5 ">
+          <h1 class="auto text-center text-2xl">সব আর্থিক সল্যুশন এক প্ল্যাটফর্মে</h1>
+        </div>
+        <div class=" grid grid-cols-4 gap-3  ">
+          <div class="sserviceBox border  text-center p-3 shadow-xl rounded-md ">
+            <div class="sserviceBoxHeader p-7">
+
+              <i class="serviceimg fa-solid fa-square-root-variable"></i>
+            <h3 class="text-center py-3">বাজারের হিসাব </h3>
+            <p class="serviceText">সারাদেশে অনলাইন এবং QR স্ক্যান করে, সবচেয়ে দ্রুত পেমেন্ট করুন বিকাশ-এ</p>
+            <a class="seemore" href="#">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right"></i></a>
+              
+              </div>
+          </div>
+          <div class="sserviceBox  shadow-xl rounded-md bg-stone-100">
+            <div class="sserviceBoxHeader p-7">
+              <i class="fa-solid fa-calculator serviceimg"></i>
+ 
+            <h3 class="text-center py-3 ">কেনাকাটার হিসাব </h3>
+            <p class="serviceText">সারাদেশে অনলাইন এবং QR স্ক্যান করে, সবচেয়ে দ্রুত পেমেন্ট করুন বিকাশ-এ</p>
+            <a class="seemore" href="#">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right"></i></a>
+              
+              </div>
+          </div>
+          <div class="sserviceBox  shadow-xl rounded-md ">
+            <div class="sserviceBoxHeader p-7">
+              <i class="fa-solid fa-cart-plus serviceimg"></i>
+            <h3 class="text-center py-3 ">পেমেন্ট</h3>
+            <p class="serviceText">সারাদেশে অনলাইন এবং QR স্ক্যান করে, সবচেয়ে দ্রুত পেমেন্ট করুন বিকাশ-এ</p>
+            <a class="seemore" href="#">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right"></i></a>
+              
+              </div>
+          </div>
+          <div class="sserviceBox  px-3 h-[350px]  shadow-xl rounded-md ">
+            <div class="sserviceBoxHeader p-7">
+              <i class="fa-solid fa-square-plus serviceimg"></i>
+            <h3 class="text-center py-3  ">বাজারের হিসাব</h3>
+            <p class="serviceText">সারাদেশে অনলাইন এবং QR স্ক্যান করে, সবচেয়ে দ্রুত পেমেন্ট করুন বিকাশ-এ</p>
+            <a class="seemore" href="#">বিস্তারিত জানুন <i class="fa-solid fa-arrow-right"></i></a>
+              
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+   
+   <footer>
+    <%-include('footer')%>
+   </footer>
+
+    
+      
+  <script>
+    document.querySelector("#openMBtn").addEventListener("click",function(){
+        document.querySelector("#openMBtn").style.display="none";
+        document.querySelector("#clMenu").style.display="block"
+    })
+    document.querySelector("#clMenubtn").addEventListener("click",function(){
+        document.querySelector("#clMenu").style.display="none";
+        document.querySelector("#openMBtn").style.display="block";
+    })
+  </script>
+      
+</body>
+</html>
