@@ -31,7 +31,7 @@ margin-top: 10px;;" class="hisabBody">
     <p style='line-height:20px;' class="aaa">
       We at hisab  take the trust and safety of our users seriously.Your Hisab user Phone Number is ${uPhone}. We just need you to verify your email address by
       clicking the button below:    </p>
-      <a href="http://192.168.1.106:10/user-verify/${verifykeyGen}" style="padding:8px;
+      <a href="https://hisab-0w57.onrender.com/user-verify/${verifykeyGen}" style="padding:8px;
       color: white;
       text-decoration: none;
       text-align:center;
