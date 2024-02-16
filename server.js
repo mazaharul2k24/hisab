@@ -4,28 +4,20 @@ var port=process.env.port || 151;
 const app=express();
 //db connectio
 require("./config/db");
-
 //passport authentaction
 //cookie parser
 const cookieparser=require('cookie-parser');
-
-
+app.use(cookieparser());
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
 //view engine setup
 app.set('view engine', 'ejs');
-
+app.use(express.static('public'));
+app.use(express.static('views'));
 const {hisabRouter}=require('./routes/hisabroute');
-const morgan=require("morgan")
-app.use([
-morgan("dev"),
-hisabRouter,
-express.static('views'),
-express.static("public"),
-express.json(),
-express.urlencoded({extended:false}),
-cookieparser(),
-])
-
-
+app.use(hisabRouter); 
+const morgan=require('morgan')
+morgan('dev')
 app.get('*',(req, res)=> { 
   res.render('error')
 }) 
