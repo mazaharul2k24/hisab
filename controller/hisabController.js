@@ -410,13 +410,17 @@ const getChangepasswordController=async(req,res)=>{
 try {
   const cruser=req.cookies.hisabId;
   const {crpass,cnpass,cncpass}=req.body;
+  
   const crUserfind=await hisabusersModel.findOne({userId:cruser});
+ 
   if(crUserfind){
-    if(crUserfind.userPassword==crpass ){
+    const match = await bcrypt.compare(crpass,crUserfind.userPassword);
+
+    if(match){
 if(cnpass===cncpass){
   crUserfind.userPassword=cncpass;
   if(await crUserfind.save()){
-    res.clearCookie("hisabId").send("password change successfull");
+    res.clearCookie("hisabId").redirect("/login");
   }else{
     res.send("password not change!")
   }
@@ -437,6 +441,8 @@ res.send("password incorrect!")
 }
 
 }
+
+ 
 
 const getResetPassController=(req,res)=>{
   res.render("users/resetpass")
